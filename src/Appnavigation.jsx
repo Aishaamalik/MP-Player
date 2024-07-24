@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // screens
 import MusicListScreen from './Screens/MusicListScreen';
 import PlayerScreen from './Screens/PlayerScreen';
 
-// navigator
+// navigators
 const Bottom = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 // color palette
 const colors = {
@@ -17,6 +19,13 @@ const colors = {
   tertiary: '#F9D689',
   quaternary: '#F5E7B2',
 };
+
+const MusicStackNavigator = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="MusicListScreen" component={MusicListScreen} />
+    <Stack.Screen name="PlayerScreen" component={PlayerScreen} />
+  </Stack.Navigator>
+);
 
 const Appnavigation = () => {
   return (
@@ -34,8 +43,8 @@ const Appnavigation = () => {
         }}
       >
         <Bottom.Screen
-          name='MusicListScreen'
-          component={MusicListScreen}
+          name='MusicList'
+          component={MusicStackNavigator}
           options={{
             headerShown: false, 
             tabBarIcon: ({ color, size }) => (
@@ -43,17 +52,6 @@ const Appnavigation = () => {
             ),
           }}
         />
-        <Bottom.Screen
-          name='PlayerScreen'
-          component={PlayerScreen}
-          options={{
-            headerShown: false, 
-            tabBarIcon: ({ color, size }) => (
-              <Icon name="play-circle" color={color} size={size} />
-            ),
-          }}
-        />
-        
       </Bottom.Navigator>
     </NavigationContainer>
   );
