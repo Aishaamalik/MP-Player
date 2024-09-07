@@ -10,7 +10,7 @@ const PlayerScreen = ({ route }) => {
   const [currentSongIndex, setCurrentSongIndex] = useState(currentIndex);
 
   const currentSong = playlist[currentSongIndex];
-  const progress = useProgress(); // Hook to track the current position and duration of the song
+  const progress = useProgress();
 
   useEffect(() => {
     const initializePlayer = async () => {
@@ -22,7 +22,7 @@ const PlayerScreen = ({ route }) => {
     };
 
     const loadTrack = async () => {
-      await TrackPlayer.reset(); // Reset the player before adding a new track
+      await TrackPlayer.reset(); 
       await TrackPlayer.add({
         id: currentSong.id,
         url: currentSong.preview,
@@ -36,7 +36,7 @@ const PlayerScreen = ({ route }) => {
     initializePlayer();
 
     return () => {
-      TrackPlayer.reset(); // Cleanup the player when the screen is unmounted
+      TrackPlayer.reset(); 
     };
   }, [currentSongIndex]);
 
@@ -62,7 +62,7 @@ const PlayerScreen = ({ route }) => {
   };
 
   const onSlidingComplete = async (value) => {
-    await TrackPlayer.seekTo(value); // Seek to the new position in the song
+    await TrackPlayer.seekTo(value);
   };
 
   return (
@@ -73,12 +73,12 @@ const PlayerScreen = ({ route }) => {
       <Slider
         style={styles.slider}
         minimumValue={0}
-        maximumValue={progress.duration} // Total duration of the song
-        value={progress.position} // Current position of the song
+        maximumValue={progress.duration}
+        value={progress.position} 
         minimumTrackTintColor="#973131"
         maximumTrackTintColor="#F9D689"
         thumbTintColor="#973131"
-        onSlidingComplete={onSlidingComplete} // Change the song's position when the user stops sliding
+        onSlidingComplete={onSlidingComplete} 
       />
 
       <View style={styles.timeContainer}>
