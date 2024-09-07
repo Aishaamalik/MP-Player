@@ -4,15 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// Screens
 import PlayerScreen from './Screens/PlayerScreen';
 import MusicFetchScreen from './Screens/MusicFetchScreen';
 
-// Navigators
 const Bottom = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Color palette
 const colors = {
   primary: '#973131',
   secondary: '#E0A75E',
