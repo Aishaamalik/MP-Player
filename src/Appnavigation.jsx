@@ -4,15 +4,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// screens
-import MusicListScreen from './Screens/MusicListScreen';
+// Screens
 import PlayerScreen from './Screens/PlayerScreen';
+import MusicFetchScreen from './Screens/MusicFetchScreen';
 
-// navigators
+// Navigators
 const Bottom = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// color palette
+// Color palette
 const colors = {
   primary: '#973131',
   secondary: '#E0A75E',
@@ -22,7 +22,7 @@ const colors = {
 
 const MusicStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="MusicListScreen" component={MusicListScreen} />
+    <Stack.Screen name="MusicFetchScreen" component={MusicFetchScreen} />
     <Stack.Screen name="PlayerScreen" component={PlayerScreen} />
   </Stack.Navigator>
 );
@@ -37,16 +37,12 @@ const Appnavigation = () => {
           tabBarStyle: {
             backgroundColor: colors.quaternary,
           },
-          tabBarLabelStyle: {
-            color: colors.primary,
-          },
         }}
       >
         <Bottom.Screen
-          name='MusicList'
+          name="Music"
           component={MusicStackNavigator}
           options={{
-            headerShown: false, 
             tabBarIcon: ({ color, size }) => (
               <Icon name="musical-notes" color={color} size={size} />
             ),
